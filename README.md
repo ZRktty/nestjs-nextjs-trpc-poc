@@ -26,7 +26,7 @@ trpc-todo/
 pnpm install
 
 # Generate the AppRouter type (required once before frontend compiles)
-cd apps/backend && pnpm generate && cd ../..
+pnpm generate
 
 # Run both apps in parallel
 pnpm dev

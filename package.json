@@ -2,6 +2,7 @@
   "name": "trpc-todo-monorepo",
   "private": true,
   "scripts": {
+    "generate": "pnpm --filter backend generate",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint"
