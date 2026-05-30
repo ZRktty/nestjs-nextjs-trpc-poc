@@ -6,4 +6,5 @@ dist
 .env
 .env.local
 apps/backend/src/@generated
+*.tsbuildinfo
 .claude/
