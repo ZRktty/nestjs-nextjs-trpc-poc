@@ -18,19 +18,19 @@ importers:
   apps/backend:
     dependencies:
       '@nestjs/common':
-        specifier: ^11.0.0
+        specifier: ^11.1.24
         version: 11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core':
-        specifier: ^11.0.0
+        specifier: ^11.1.24
         version: 11.1.24(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.24)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/platform-express':
-        specifier: ^11.0.0
+        specifier: ^11.1.24
         version: 11.1.24(@nestjs/common@11.1.24(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.24)
       '@repo/trpc-contract':
         specifier: workspace:*
         version: link:../../packages/trpc-contract
       '@trpc/server':
-        specifier: ^11.0.0
+        specifier: ^11.17.0
         version: 11.17.0(typescript@6.0.3)
       nestjs-trpc:
         specifier: ^2.9.1
@@ -46,7 +46,7 @@ importers:
         version: 3.25.76
     devDependencies:
       '@nestjs/cli':
-        specifier: ^11.0.0
+        specifier: ^11.0.21
         version: 11.0.21(@types/node@22.19.19)
       '@nestjs/schematics':
         specifier: ^11.1.0
