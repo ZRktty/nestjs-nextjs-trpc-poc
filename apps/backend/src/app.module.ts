@@ -5,9 +5,7 @@ import { TodoService } from "./todo.service";
 
 @Module({
   imports: [
-    TRPCModule.forRoot({
-      autoSchemaFile: "./src/@generated",
-    }),
+    TRPCModule.forRoot({}),
   ],
   providers: [TodoRouter, TodoService],
 })

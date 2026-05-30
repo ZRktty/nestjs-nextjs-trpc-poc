@@ -2,8 +2,9 @@
   "name": "@repo/backend",
   "version": "0.0.1",
   "scripts": {
-    "build": "nest build",
-    "dev": "nest start --watch",
+    "generate": "nestjs-trpc generate",
+    "build": "pnpm generate && nest build",
+    "dev": "nestjs-trpc watch & nest start --watch",
     "start": "node dist/main"
   },
   "dependencies": {
