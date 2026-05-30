@@ -6,5 +6,6 @@ dist
 .env
 .env.local
 apps/backend/src/@generated
+apps/frontend/next-env.d.ts
 *.tsbuildinfo
 .claude/
