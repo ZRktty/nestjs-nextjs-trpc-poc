@@ -1,6 +1,10 @@
 # tRPC Todo — Monorepo PoC
 
-**Stack:** NestJS v11 · Next.js 15 · tRPC v11 · nestjs-trpc · pnpm workspaces · Turborepo
+**Stack:** NestJS v11 · Next.js v16 · tRPC v11 · nestjs-trpc v2.9.1 · Zod v4 · TypeScript 6 · pnpm workspaces · Turborepo
+
+→ **[Step-by-step tutorial + production readiness analysis](TUTORIAL.md)**
+
+---
 
 ## Structure
 
@@ -21,27 +25,37 @@ trpc-todo/
 # Install deps
 pnpm install
 
+# Generate the AppRouter type (required once before frontend compiles)
+cd apps/backend && pnpm generate && cd ../..
+
 # Run both apps in parallel
 pnpm dev
 ```
 
 ## How it works
 
-1. **nestjs-trpc** decorators (`@Router`, `@Query`, `@Mutation`) on `TodoRouter` auto-generate the `AppRouter` type + schema file
-2. The generated `AppRouter` is imported by the frontend for end-to-end type safety — no manual type sharing needed
-3. The shared `@repo/trpc-contract` package holds Zod schemas used on both sides
+1. **nestjs-trpc CLI** (`nestjs-trpc generate`) statically analyses `*.router.ts` files and emits `src/@generated/server.ts` — no NestJS bootstrap required
+2. The generated `AppRouter` type is imported by the frontend for end-to-end type safety — no manual type sharing needed
+3. The shared `@repo/trpc-contract` package holds Zod v4 schemas used by both apps
+
+```text
+@repo/trpc-contract  ──►  apps/backend  ──[CLI]──►  @generated/server.ts
+        │                                                     │
+        └─────────────────────────────────────────────────────►  apps/frontend
+```
 
 ## Routes
 
-| Method   | Procedure          | Description      |
-|----------|--------------------|------------------|
-| Query    | `todos.getAll`     | List all todos   |
-| Mutation | `todos.create`     | Create a todo    |
+| Method   | Procedure          | Description         |
+|----------|--------------------|---------------------|
+| Query    | `todos.getAll`     | List all todos      |
+| Mutation | `todos.create`     | Create a todo       |
 | Mutation | `todos.update`     | Update title/status |
-| Mutation | `todos.delete`     | Delete a todo    |
+| Mutation | `todos.delete`     | Delete a todo       |
 
 ## Notes
 
 - Backend uses an in-memory store (no DB) — replace `TodoService` with Prisma/TypeORM for persistence
 - CORS is pre-configured for `localhost:3000`
-- The `@generated` folder is produced by `nestjs-trpc` on first backend start — commit or gitignore per preference
+- `apps/backend/src/@generated/` is gitignored — run `pnpm generate` (or `pnpm dev`) to recreate it
+- See [TUTORIAL.md](TUTORIAL.md) for a full build walkthrough and production readiness analysis
