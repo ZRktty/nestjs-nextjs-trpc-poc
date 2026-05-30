@@ -6,3 +6,4 @@ dist
 .env
 .env.local
 apps/backend/src/@generated
+.claude/
