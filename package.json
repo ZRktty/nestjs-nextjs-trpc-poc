@@ -1,6 +1,7 @@
 {
-  "name": "trpc-todo-monorepo",
-  "private": true,
+  "name": "nestjs-nextjs-trpc-poc",
+  "description": "A minimal full-stack proof-of-concept demonstrating end-to-end type safety across a NestJS backend and Next.js frontend using tRPC — no REST, no manual type duplication, just a single shared type contract from server to UI.",
+  "private": false,
   "scripts": {
     "generate": "pnpm --filter backend generate",
     "dev": "turbo run dev",
