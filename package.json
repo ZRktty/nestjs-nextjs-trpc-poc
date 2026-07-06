@@ -8,7 +8,7 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "turbo": "^2.5.4",
+    "turbo": "^2.10.0",
     "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@10.11.0"
